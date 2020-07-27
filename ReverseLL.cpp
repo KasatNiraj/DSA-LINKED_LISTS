@@ -29,5 +29,19 @@ struct Node* reverseList(struct Node *head)
         res.pop_back();
     }
     return head;
-    
+}
+
+
+// Should reverse list and return new head.
+// recursive solution 
+// O(n) extra space used for stack
+struct Node* reverseList(struct Node *head)
+{
+    if(head==NULL || head->next==NULL)
+        return head;
+    Node *res_head=reverseList(head->next);
+    Node *res_tail=head->next;
+    res_tail->next=head;
+    head->next=NULL;
+    return res_head;
 }
